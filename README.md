@@ -1,38 +1,73 @@
 # Work Item Tracker Analytics (Fabric + Power BI) — Demo / Redacted
 
-An end-to-end operational analytics pipeline:
-**SharePoint Online Lists (parent/child) → Fabric Dataflow Gen2 → Lakehouse → Semantic Model → Power BI Report (drill-through)**
+End-to-end operational analytics pipeline:
+**SharePoint (parent/child lists) → Fabric Dataflow Gen2 → Lakehouse → Semantic Model → Power BI Report (drill-through)**
 
-This repository is a **public demo**. It contains **no production data** and uses **pseudonymous naming** (e.g., `WorkItemKey`, `Lead`, `Workstream`) and **redacted visuals**.
+This repository is a **public demo**:
+- Uses **synthetic data** in `sample-data/`
+- Uses **pseudonymous naming** (e.g., `WorkItemKey`, `LeadAlias`, `Workstream`, `Stage`)
+- Includes **redacted visuals** (no tenant URLs, no real names, no internal identifiers)
 
-## Why it matters
-- Shows how to model parent/child SharePoint lists for analytics
-- Demonstrates Fabric ingestion + Lakehouse modeling + semantic layer governance
-- Highlights reporting UX patterns (KPI cards, trends, drill-through)
+---
 
-## Tech Stack
-- Source: SharePoint Online Lists (parent/child lookup)
-- ETL: Fabric Dataflow Gen2 (Power Query M)
-- Storage: Fabric Lakehouse
-- Modeling: Star schema + `d_Calendar`
-- Semantic layer: DAX measures (KPI-focused)
-- Reporting: Power BI (main + drill-through)
+## What this demonstrates
+- Modeling **parent/child list data** for analytics (work items + notes/links)
+- Building an **ETL pipeline** in Fabric Dataflow Gen2 (Power Query M)
+- Publishing an analytics-ready table in a **Lakehouse**, then creating a **semantic model**
+- Designing a **Power BI report** with KPI cards, trends, and drill-through patterns
 
-## Repo Map
-- `docs/architecture.md` – pipeline overview & lineage (v2)
-- `docs/model.md` – semantic model structure (grain, relationships, KPI naming)
-- `docs/data-dictionary.md` – demo schema + naming dictionary
-- `docs/kpi-spec.md` – KPI definitions (demo names)
-- `docs/schema.md` – demo parent/child schema and relationships (redacted)
-- `docs/refresh-and-ops.md` – refresh cadence & assumptions
-- `docs/security-and-privacy.md` – redaction rules / what is excluded
-- `powerquery/` – redacted demo M patterns
-- `dax/measures_demo.md` – demo DAX measures (KPI_*) aligned with the KPI spec
-- `dax/` – demo measures (public-safe names)
-- `sample-data/` – synthetic CSVs
-- `screenshots/` – redacted visuals
+---
 
-## Security & Privacy (Public-safe)
-- No tenant URLs, list GUIDs, user names/emails, or record-level descriptions are included.
-- Visuals are redacted to remove identifiers and operational details.
-- Naming is intentionally different from any internal/production system.
+## Architecture (Demo)
+### Fabric lineage (v2)
+![Fabric Lineage v2 (Demo)](screenshots/fabric/lineage_v2_demo.png)
+
+**Flow summary**
+1) Two SharePoint sources (parent + child)
+2) Two Dataflow Gen2 pipelines standardize and enrich data
+3) Lakehouse stores curated tables
+4) Semantic model provides KPI measures and time intelligence
+5) Power BI report supports slice/filter + drill-through detail
+
+> Implementation details: [`docs/architecture.md`](docs/architecture.md)
+
+---
+
+## Data Model (Demo)
+**Grain:** `f_WorkItems` is at the **work item grain** (1 row per `WorkItemKey`).  
+Child tables store detail at **many-to-one** (notes/links).
+
+- Full schema: [`docs/schema.md`](docs/schema.md)
+
+```mermaid
+erDiagram
+  F_WORKITEMS ||--o{ X_WORKITEMNOTES : has
+  F_WORKITEMS ||--o{ X_WORKITEMLINKS : has
+
+  F_WORKITEMS {
+    INT WorkItemKey PK
+    TEXT WorkItemLabel
+    TEXT Workstream
+    TEXT Stage
+    TEXT UrgencyBand
+    DATE IntakeDate
+    DATE PlanEnd
+    DATE DoneDate
+    TEXT SLAFlag
+  }
+
+  X_WORKITEMNOTES {
+    INT NoteKey PK
+    INT WorkItemKey FK
+    DATE NoteDate
+    TEXT NoteClass
+    TEXT NoteSummary
+  }
+
+  X_WORKITEMLINKS {
+    INT LinkKey PK
+    INT WorkItemKey FK
+    TEXT LinkClass
+    TEXT LinkTitle
+    TEXT LinkUrl
+  }
