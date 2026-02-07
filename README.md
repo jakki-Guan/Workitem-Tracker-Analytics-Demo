@@ -1,4 +1,5 @@
 # Work Item Tracker Analytics (Fabric + Power BI) — Demo / Redacted
+![Release](https://img.shields.io/github/v/release/jakki-Guan/Workitem-Tracker-Analytics-Demo)
 
 End-to-end operational analytics pipeline:  
 **SharePoint (parent/child lists) → Fabric Dataflow Gen2 → Lakehouse → Semantic Model → Power BI Report (drill-through)**
