@@ -7,6 +7,8 @@ This repository is a **public demo**:
 - Uses **synthetic data** in `sample-data/`
 - Uses **pseudonymous naming** (e.g., `WorkItemKey`, `LeadAlias`, `Workstream`, `Stage`)
 - Includes **redacted visuals** (no tenant URLs, no real names, no internal identifiers)
+## Report Screenshots (Redacted Demo)
+![Main page](screenshots/report/main_page_demo.png)
 
 ---
 
