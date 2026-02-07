@@ -8,7 +8,7 @@
 ```DAX
 KPI_WorkItemCount =
 DISTINCTCOUNT ( f_WorkItems[WorkItemKey] )
-
+```
 KPI_DoneCount =
 CALCULATE (
     [KPI_WorkItemCount],
