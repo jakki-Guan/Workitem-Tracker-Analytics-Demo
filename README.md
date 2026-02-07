@@ -23,6 +23,7 @@ This repository is a **public demo**. It contains **no production data** and use
 - `docs/model.md` – semantic model structure (grain, relationships, KPI naming)
 - `docs/data-dictionary.md` – demo schema + naming dictionary
 - `docs/kpi-spec.md` – KPI definitions (demo names)
+- `docs/schema.md` – demo parent/child schema and relationships (redacted)
 - `docs/refresh-and-ops.md` – refresh cadence & assumptions
 - `docs/security-and-privacy.md` – redaction rules / what is excluded
 - `powerquery/` – redacted demo M patterns
