@@ -81,6 +81,7 @@ erDiagram
 Synthetic CSV samples live in:
 - [`sample-data/f_WorkItems_demo.csv`](sample-data/f_WorkItems_demo.csv)
 - [`sample-data/x_WorkItemNotes_demo.csv`](sample-data/x_WorkItemNotes_demo.csv)
+- [`sample-data/x_WorkItemLinks_demo.csv`](sample-data/x_WorkItemLinks_demo.csv)
 
 These files contain **no production values** and are designed only to showcase the pipeline patterns.
 
