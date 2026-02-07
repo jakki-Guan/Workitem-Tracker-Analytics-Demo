@@ -89,7 +89,8 @@ These files contain **no production values** and are designed only to showcase t
 
 ## Power Query (ETL)
 Public-safe M examples:
-- See: [`powerquery/`](powerquery/)
+- [`powerquery/df_workitems_demo.m`](powerquery/df_workitems_demo.m)
+- [`powerquery/df_notes_demo.m`](powerquery/df_notes_demo.m)
 
 Key transformations include:
 - type standardization (dates/enums)
