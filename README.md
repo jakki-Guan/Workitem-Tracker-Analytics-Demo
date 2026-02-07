@@ -136,15 +136,15 @@ Details: [`docs/security-and-privacy.md`](docs/security-and-privacy.md)
 
 ## Repo Map
 - [`docs/quickstart.md`](docs/quickstart.md) – rebuild steps and how to review the demo (optional)
-- `docs/architecture.md` – pipeline overview & Fabric lineage (v2)
-- `docs/schema.md` – parent/child schema + ER diagram (redacted)
-- `docs/data-dictionary.md` – field definitions + KPI dependencies (demo)
-- `docs/kpi-spec.md` – KPI definitions and business rules (optional)
-- `docs/security-and-privacy.md` – redaction rules / public-safe policy (optional)
-- `docs/model.md` – semantic model notes (grain, relationships, date assumptions)
-- `powerquery/` – public-safe Power Query M patterns
-- `dax/measures_demo.md` – demo DAX measures (`KPI_*`)
-- `sample-data/` – synthetic CSVs (demo inputs)
-- `screenshots/` – redacted visuals (e.g., Fabric lineage)
+- [`docs/architecture.md`](docs/architecture.md) – pipeline overview & Fabric lineage (v2)
+- [`docs/schema.md`](docs/schema.md) – parent/child schema + ER diagram (redacted)
+- [`docs/data-dictionary.md`](docs/data-dictionary.md) – field definitions + KPI dependencies (demo)
+- [`docs/kpi-spec.md`](docs/kpi-spec.md) – KPI definitions and business rules (optional)
+- [`docs/security-and-privacy.md`](docs/security-and-privacy.md) – redaction rules / public-safe policy (optional)
+- [`docs/model.md`](docs/model.md) – semantic model notes (grain, relationships, date assumptions)
+- [`powerquery/`](powerquery/) – public-safe Power Query M patterns
+- [`dax/measures_demo.md`](dax/measures_demo.md) – demo DAX measures (`KPI_*`)
+- [`sample-data/`](sample-data/) – synthetic CSVs (demo inputs)
+- [`screenshots/`](screenshots/) – redacted visuals (e.g., Fabric lineage)
 
 
