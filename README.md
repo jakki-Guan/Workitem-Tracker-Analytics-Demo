@@ -1,6 +1,6 @@
 # Work Item Tracker Analytics (Fabric + Power BI) — Demo / Redacted
 
-End-to-end operational analytics pipeline:
+End-to-end operational analytics pipeline:  
 **SharePoint (parent/child lists) → Fabric Dataflow Gen2 → Lakehouse → Semantic Model → Power BI Report (drill-through)**
 
 This repository is a **public demo**:
@@ -19,6 +19,7 @@ This repository is a **public demo**:
 ---
 
 ## Architecture (Demo)
+
 ### Fabric lineage (v2)
 ![Fabric Lineage v2 (Demo)](screenshots/fabric/lineage_v2_demo.png)
 
@@ -29,15 +30,16 @@ This repository is a **public demo**:
 4) Semantic model provides KPI measures and time intelligence
 5) Power BI report supports slice/filter + drill-through detail
 
-> Implementation details: [`docs/architecture.md`](docs/architecture.md)
+Implementation details: [`docs/architecture.md`](docs/architecture.md)
 
 ---
 
 ## Data Model (Demo)
-**Grain:** `f_WorkItems` is at the **work item grain** (1 row per `WorkItemKey`).  
+
+**Grain:** `f_WorkItems` is modeled at the **work item grain** (1 row per `WorkItemKey`).  
 Child tables store detail at **many-to-one** (notes/links).
 
-- Full schema: [`docs/schema.md`](docs/schema.md)
+- Full schema details: [`docs/schema.md`](docs/schema.md)
 
 ```mermaid
 erDiagram
@@ -71,3 +73,73 @@ erDiagram
     TEXT LinkTitle
     TEXT LinkUrl
   }
+```
+
+---
+
+## Demo Data
+Synthetic CSV samples live in:
+- `sample-data/f_WorkItems_demo.csv`
+- `sample-data/x_WorkItemNotes_demo.csv`
+- `sample-data/x_WorkItemLinks_demo.csv` (optional)
+
+These files contain **no production values** and are designed only to showcase the pipeline patterns.
+
+---
+
+## Power Query (ETL)
+Public-safe M examples:
+- See: [`powerquery/`](powerquery/)
+
+Key transformations include:
+- type standardization (dates/enums)
+- flattening multi-person fields into delimited text
+- derived flags (e.g., `SLAFlag`)
+- aggregation of child notes into work-item level (optional)
+
+---
+
+## Semantic Layer (DAX)
+Demo measures are documented here:
+- [`dax/measures_demo.md`](dax/measures_demo.md)
+
+Example KPI categories:
+- volume: total items / active / done
+- SLA: eligible vs past due / SLA OK rate
+- trend helpers: MTD / YTD (requires `d_Calendar`)
+
+---
+
+## How to use this repo
+
+### Option A — Quick review (recommended)
+1) Open the lineage image: `screenshots/fabric/lineage_v2_demo.png`
+2) Read the data model: `docs/schema.md`
+3) Scan ETL patterns: `powerquery/`
+4) Scan measures: `dax/measures_demo.md`
+
+### Option B — Rebuild with your own demo data
+1) Replace CSVs in `sample-data/` with your own synthetic values
+2) Update the Power Query file(s) to point to your raw URLs or local files
+3) Recreate the semantic model and measures in Power BI
+
+---
+
+## Security & Privacy (Public-safe)
+- No tenant URLs, list GUIDs, workspace names, real user names/emails, or record-level descriptions
+- Visuals are redacted and naming is intentionally different from any internal environment
+- This repo is for portfolio demonstration only
+
+Details: [`docs/security-and-privacy.md`](docs/security-and-privacy.md)
+
+---
+
+## Repo Map
+- `docs/architecture.md` – pipeline overview & lineage (v2)
+- `docs/model.md` – semantic model structure (grain, relationships, KPI naming)
+- `docs/schema.md` – demo parent/child schema and relationships (redacted)
+- `powerquery/` – redacted demo M patterns
+- `dax/measures_demo.md` – demo DAX measures (KPI_*)
+- `sample-data/` – synthetic CSVs
+- `screenshots/` – redacted visuals
+
