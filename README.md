@@ -79,9 +79,8 @@ erDiagram
 
 ## Demo Data
 Synthetic CSV samples live in:
-- `sample-data/f_WorkItems_demo.csv`
-- `sample-data/x_WorkItemNotes_demo.csv`
-- `sample-data/x_WorkItemLinks_demo.csv` (optional)
+- [`sample-data/f_WorkItems_demo.csv`](sample-data/f_WorkItems_demo.csv)
+- [`sample-data/x_WorkItemNotes_demo.csv`](sample-data/x_WorkItemNotes_demo.csv)
 
 These files contain **no production values** and are designed only to showcase the pipeline patterns.
 
@@ -114,10 +113,10 @@ Example KPI categories:
 ## How to use this repo
 
 ### Option A — Quick review (recommended)
-1) Open the lineage image: `screenshots/fabric/lineage_v2_demo.png`
-2) Read the data model: `docs/schema.md`
-3) Scan ETL patterns: `powerquery/`
-4) Scan measures: `dax/measures_demo.md`
+1) Open the lineage image: [`screenshots/fabric/lineage_v2_demo.png`](screenshots/fabric/lineage_v2_demo.png)
+2) Read the data model: [`docs/schema.md`](docs/schema.md)
+3) Scan ETL patterns: [`powerquery/`](powerquery/)
+4) Scan measures: [`dax/measures_demo.md`](dax/measures_demo.md)
 
 ### Option B — Rebuild with your own demo data
 1) Replace CSVs in `sample-data/` with your own synthetic values
