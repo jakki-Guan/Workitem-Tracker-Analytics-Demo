@@ -9,6 +9,8 @@ This repository is a **public demo**:
 - Includes **redacted visuals** (no tenant URLs, no real names, no internal identifiers)
 ## Report Screenshots (Redacted Demo)
 ![Main page](screenshots/report/main_page_demoV2.png)
+### Drill-through (Lead)
+![Drill-through - Lead](screenshots/report/drillthrough_lead_demo.png)
 
 ---
 
