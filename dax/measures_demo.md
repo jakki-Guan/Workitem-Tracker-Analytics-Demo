@@ -32,7 +32,8 @@ CALCULATE (
 KPI_PastDueCount =
 CALCULATE (
     [KPI_WorkItemCount],
-    f_WorkItems[SLAFlag] = "PAST_DUE"
+    f_WorkItems[SLAFlag] = "PAST_DUE",
+    f_WorkItems[SLAFlag] <> "VOID"
 )
 ```
 
@@ -64,7 +65,7 @@ DIVIDE ( [KPI_SLA_OK_Count], [KPI_SLA_EligibleCount] )
 ```
 
 ## Trend Helpers
-
+> Trend measures assume the active relationship from d_Calendar[Date] to f_WorkItems[IntakeDate] (or update accordingly if PlanEnd is used).
 ### KPI_WorkItemCount_MTD
 ```DAX
 KPI_WorkItemCount_MTD =
@@ -102,3 +103,66 @@ DIVIDE (
     [KPI_WorkItemCount]
 )
 ```
+
+## Rates (demo)
+
+### KPI_PastDueRate
+```DAX
+KPI_PastDueRate =
+DIVIDE ( [KPI_PastDueCount], [KPI_SLA_EligibleCount] )
+```
+
+### KPI_DoneRate
+```DAX
+KPI_DoneRate =
+DIVIDE ( [KPI_DoneCount], [KPI_WorkItemCount] )
+```
+
+## Time / Flow (demo)
+### KPI_AvgAgeActiveDays
+```DAX
+KPI_AvgAgeActiveDays =
+VAR TodayDate = TODAY()
+RETURN
+AVERAGEX (
+    FILTER (
+        f_WorkItems,
+        f_WorkItems[Stage] IN { "Stage A", "Stage B" }
+            && f_WorkItems[SLAFlag] <> "VOID"
+            && NOT ISBLANK ( f_WorkItems[IntakeDate] )
+    ),
+    TodayDate - f_WorkItems[IntakeDate]
+)
+```
+
+### KPI_AvgCycleDays
+```DAX
+KPI_AvgCycleDays =
+AVERAGEX (
+    FILTER (
+        f_WorkItems,
+        f_WorkItems[Stage] = "Stage C"
+            && NOT ISBLANK ( f_WorkItems[PlanStart] )
+            && NOT ISBLANK ( f_WorkItems[DoneDate] )
+    ),
+    f_WorkItems[DoneDate] - f_WorkItems[PlanStart]
+)
+```
+
+### KPI_MedianCycleDays (optional)
+```DAX
+KPI_MedianCycleDays =
+VAR T =
+    FILTER (
+        f_WorkItems,
+        f_WorkItems[Stage] = "Stage C"
+            && NOT ISBLANK ( f_WorkItems[PlanStart] )
+            && NOT ISBLANK ( f_WorkItems[DoneDate] )
+    )
+RETURN
+IF ( COUNTROWS ( T ) = 0, BLANK(),
+    PERCENTILEX.INC ( T, f_WorkItems[DoneDate] - f_WorkItems[PlanStart], 0.5 )
+)
+
+```
+
