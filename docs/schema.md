@@ -68,3 +68,38 @@ All names below are **pseudonymous** and do not match any production environment
 ## 5) Privacy statement
 - No tenant URLs, real user names/emails, or internal identifiers are included.
 - Any values in `sample-data/` are synthetic and used for demonstration only.
+
+## 6) ER Diagram (Demo)
+
+```mermaid
+erDiagram
+  F_WORKITEMS ||--o{ X_WORKITEMNOTES : has
+  F_WORKITEMS ||--o{ X_WORKITEMLINKS : has
+
+  F_WORKITEMS {
+    INT WorkItemKey PK
+    TEXT WorkItemLabel
+    TEXT Workstream
+    TEXT Stage
+    TEXT UrgencyBand
+    DATE IntakeDate
+    DATE PlanEnd
+    DATE DoneDate
+    TEXT SLAFlag
+  }
+
+  X_WORKITEMNOTES {
+    INT NoteKey PK
+    INT WorkItemKey FK
+    DATE NoteDate
+    TEXT NoteClass
+    TEXT NoteSummary
+  }
+
+  X_WORKITEMLINKS {
+    INT LinkKey PK
+    INT WorkItemKey FK
+    TEXT LinkClass
+    TEXT LinkTitle
+    TEXT LinkUrl
+  }
