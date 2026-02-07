@@ -135,7 +135,7 @@ Details: [`docs/security-and-privacy.md`](docs/security-and-privacy.md)
 ---
 
 ## Repo Map
-- `docs/quickstart.md` – rebuild steps and how to review the demo (optional)
+- [`docs/quickstart.md`](docs/quickstart.md) – rebuild steps and how to review the demo (optional)
 - `docs/architecture.md` – pipeline overview & Fabric lineage (v2)
 - `docs/schema.md` – parent/child schema + ER diagram (redacted)
 - `docs/data-dictionary.md` – field definitions + KPI dependencies (demo)
