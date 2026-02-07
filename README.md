@@ -1,39 +1,35 @@
-# Work Item Tracker Analytics (Demo / Redacted)
+# Work Item Tracker Analytics (Fabric + Power BI) — Demo / Redacted
 
-End-to-end operational analytics pipeline built with **SharePoint Online Lists → Microsoft Fabric → Power BI**.
-This repository contains **no production data** and uses **redacted screenshots + demo naming**.
+An end-to-end operational analytics pipeline:
+**SharePoint Online Lists (parent/child) → Fabric Dataflow Gen2 → Lakehouse → Semantic Model → Power BI Report (drill-through)**
 
-## What this is
-A demo-style portfolio project that showcases:
-- Parent/child list modeling (lookup key relationships)
-- Fabric ingestion with Dataflow Gen2 (Power Query M)
-- Lakehouse + star-schema modeling + Calendar dimension
-- Semantic model measures for KPI reporting
-- Power BI report UX (main + drill-through)
+This repository is a **public demo**. It contains **no production data** and uses **pseudonymous naming** (e.g., `WorkItemKey`, `Lead`, `Workstream`) and **redacted visuals**.
 
-## High-level Architecture
-SharePoint Lists → Dataflow Gen2 → Lakehouse → Semantic Model → Power BI Report  
-(See: `docs/architecture.md`)
+## Why it matters
+- Shows how to model parent/child SharePoint lists for analytics
+- Demonstrates Fabric ingestion + Lakehouse modeling + semantic layer governance
+- Highlights reporting UX patterns (KPI cards, trends, drill-through)
 
-## Contents
-- `docs/architecture.md` – pipeline overview + lineage explanation  
-- `docs/data-dictionary.md` – demo schema & naming dictionary  
-- `docs/kpi-spec.md` – KPI definitions (demo names)  
-- `docs/refresh-and-ops.md` – refresh cadence + assumptions  
-- `docs/security-and-privacy.md` – redaction rules and what is excluded  
-- `powerquery/` – demo Power Query M patterns (redacted)  
-- `dax/` – demo measures (redacted names)  
-- `sample-data/` – synthetic datasets (CSV)  
-- `screenshots/` – redacted visuals (no identifiers, no record details)
+## Tech Stack
+- Source: SharePoint Online Lists (parent/child lookup)
+- ETL: Fabric Dataflow Gen2 (Power Query M)
+- Storage: Fabric Lakehouse
+- Modeling: Star schema + `d_Calendar`
+- Semantic layer: DAX measures (KPI-focused)
+- Reporting: Power BI (main + drill-through)
 
-## Security & Privacy
-- No tenant URLs, list GUIDs, user names, emails, or task descriptions are included.
-- All field/table/measure names use a **demo naming system** (e.g., `WorkItemKey`, `Workstream`, `Lead`).
-- Any screenshots are redacted to remove identifiers and record-level details.
+## Repo Map
+- `docs/architecture.md` – pipeline overview & lineage (v2)
+- `docs/data-dictionary.md` – demo schema + naming dictionary
+- `docs/kpi-spec.md` – KPI definitions (demo names)
+- `docs/refresh-and-ops.md` – refresh cadence & assumptions
+- `docs/security-and-privacy.md` – redaction rules / what is excluded
+- `powerquery/` – redacted demo M patterns
+- `dax/` – demo measures (renamed)
+- `sample-data/` – synthetic CSVs
+- `screenshots/` – redacted visuals
 
-## Status
-- [ ] Add architecture diagram
-- [ ] Add demo naming dictionary + data dictionary
-- [ ] Add KPI spec + sample DAX
-- [ ] Add demo Power Query M + synthetic data
-- [ ] Add redacted screenshots
+## Security & Privacy (Public-safe)
+- No tenant URLs, list GUIDs, user names/emails, or record-level descriptions are included.
+- Visuals are redacted to remove identifiers and operational details.
+- Naming is intentionally different from any internal/production system.
