@@ -36,4 +36,69 @@ CALCULATE (
 )
 ```
 
+###SLA / quality
 
+
+### KPI_SLA_OK_Count
+```DAX
+KPI_SLA_OK_Count =
+CALCULATE (
+    [KPI_WorkItemCount],
+    f_WorkItems[SLAFlag] = "SLA_OK"
+)
+```
+
+### KPI_SLA_EligibleCount
+```DAX
+KPI_SLA_EligibleCount =
+CALCULATE (
+    [KPI_WorkItemCount],
+    NOT ( f_WorkItems[SLAFlag] IN { "NA", "VOID" } )
+)
+```
+
+### KPI_SLA_OK_Rate
+```DAX
+KPI_SLA_OK_Rate =
+DIVIDE ( [KPI_SLA_OK_Count], [KPI_SLA_EligibleCount] )
+```
+
+###Trend Helpers
+
+### KPI_WorkItemCount_MTD
+```DAX
+KPI_WorkItemCount_MTD =
+CALCULATE (
+    [KPI_WorkItemCount],
+    DATESMTD ( d_Calendar[Date] )
+)
+```
+
+### KPI_WorkItemCount_YTD
+```DAX
+KPI_WorkItemCount_YTD =
+CALCULATE (
+    [KPI_WorkItemCount],
+    DATESYTD ( d_Calendar[Date] )
+)
+```
+
+###Notes-related
+
+### KPI_ItemsWithNotes
+```DAX
+KPI_ItemsWithNotes =
+CALCULATE (
+    [KPI_WorkItemCount],
+    f_WorkItems[NoteCount] > 0
+)
+```
+
+### KPI_AvgNotesPerItem
+```DAX
+KPI_AvgNotesPerItem =
+DIVIDE (
+    SUM ( f_WorkItems[NoteCount] ),
+    [KPI_WorkItemCount]
+)
+```
