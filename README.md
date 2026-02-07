@@ -20,12 +20,14 @@ This repository is a **public demo**. It contains **no production data** and use
 
 ## Repo Map
 - `docs/architecture.md` – pipeline overview & lineage (v2)
+- `docs/model.md` – semantic model structure (grain, relationships, KPI naming)
 - `docs/data-dictionary.md` – demo schema + naming dictionary
 - `docs/kpi-spec.md` – KPI definitions (demo names)
 - `docs/refresh-and-ops.md` – refresh cadence & assumptions
 - `docs/security-and-privacy.md` – redaction rules / what is excluded
 - `powerquery/` – redacted demo M patterns
-- `dax/` – demo measures (renamed)
+- `dax/measures_demo.md` – demo DAX measures (KPI_*) aligned with the KPI spec
+- `dax/` – demo measures (public-safe names)
 - `sample-data/` – synthetic CSVs
 - `screenshots/` – redacted visuals
 
