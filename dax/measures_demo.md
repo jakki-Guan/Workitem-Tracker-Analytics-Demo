@@ -36,7 +36,7 @@ CALCULATE (
 )
 ```
 
-##SLA / quality
+## SLA / quality
 
 
 ### KPI_SLA_OK_Count
@@ -83,7 +83,7 @@ CALCULATE (
 )
 ```
 
-##Notes-related
+## Notes-related
 
 ### KPI_ItemsWithNotes
 ```DAX
