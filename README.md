@@ -135,6 +135,11 @@ Details: [`docs/security-and-privacy.md`](docs/security-and-privacy.md)
 
 ---
 
+## Project Status
+See: [`docs/project-status.md`](docs/project-status.md)
+
+---
+
 ## Repo Map
 - [`docs/quickstart.md`](docs/quickstart.md) – rebuild steps and how to review the demo (optional)
 - [`docs/architecture.md`](docs/architecture.md) – pipeline overview & Fabric lineage (v2)
