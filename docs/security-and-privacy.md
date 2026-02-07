@@ -48,15 +48,13 @@ All screenshots/visual evidence follow these rules:
 
 ### Synthetic values only
 - Any values under `sample-data/` are generated for demonstration and may not reflect real distributions.
-
 ---
 
-## 5) Safe reuse guidance
-If you fork or reuse this template for your own portfolio:
-- Use only synthetic data
-- Keep pseudonymous naming
-- Do not include real URLs, IDs, names, or record-level descriptions
-- Treat any screenshot from internal systems as sensitive until fully redacted
+## 5) Safe sharing note
+This repo is published for portfolio demonstration only.
+- Data is synthetic, and naming is pseudonymous.
+- Screenshots are redacted; do not assume any visuals reflect a real environment.
+- Do not share internal URLs, IDs, names, or record-level details in public repos.
 
 ---
 
