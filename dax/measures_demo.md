@@ -63,7 +63,7 @@ KPI_SLA_OK_Rate =
 DIVIDE ( [KPI_SLA_OK_Count], [KPI_SLA_EligibleCount] )
 ```
 
-###Trend Helpers
+## Trend Helpers
 
 ### KPI_WorkItemCount_MTD
 ```DAX
