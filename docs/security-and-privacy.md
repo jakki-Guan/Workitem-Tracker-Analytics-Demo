@@ -41,10 +41,10 @@ All screenshots/visual evidence follow these rules:
 ## 4) Data anonymization & naming conventions
 ### Demo naming
 - Primary key: `WorkItemKey`
-- People fields: `LeadAlias`, `ContributorAliases`, `IntakeContactAlias`
+- People fields: `Lead`, `Contributor`
 - Work categories: `Workstream 1..N`
 - Stages: `Stage A/B/C/D`
-- Priority: `Urgency 0/1/2/3`
+- Priority: `Urgency 0/1/2/Not Tracked`
 
 ### Synthetic values only
 - Any values under `sample-data/` are generated for demonstration and may not reflect real distributions.
